@@ -10,8 +10,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import java.util.*;
@@ -22,8 +24,8 @@ public class Main {
 	
 	public static JFrame prozor;
 	
-	public static String email_adresa = "email";
-	public static String sifra_email = "sifra";
+	public static String email_adresa = "testingjavaemailsending@gmail.com";
+	public static String sifra_email = "lpkgfajmqkqlquvw";
 	
 	public static void main(String[] args) {
 		prozor = new JFrame();
@@ -145,8 +147,15 @@ public class Main {
 	         // Send message  
 	       Transport.send(message);  
 	       System.out.println("Poruka poslata uspesno....");  
-	  
-	      }catch (MessagingException mex) {mex.printStackTrace();}  
+	       
+	       JOptionPane.showMessageDialog(prozor, "Uspesno poslat email!", "USPEH", JOptionPane.OK_OPTION | JOptionPane.INFORMATION_MESSAGE);
+	       System.exit(0);
+	       
+	      } catch (MessagingException mex) {
+	    	  mex.printStackTrace();
+	    	  JOptionPane.showMessageDialog(prozor, "Greska pri slanju!", "GRESKA", JOptionPane.OK_OPTION | JOptionPane.WARNING_MESSAGE);
+	    	  System.exit(-1);
+	      }  
 	}
 
 	public static void dodaj_mouse_listener(JTextArea tekst) {
